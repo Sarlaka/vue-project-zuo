@@ -1,0 +1,923 @@
+#root{
+	/*min-height: 10000px;*/
+    width: 100%;
+    background-color: #f6f6f6;
+}
+/*头部导航*/
+.zuo-navbar{
+	width: 100%;
+}
+.nav{
+	width: 100%;
+	padding: 0 30px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+    height: 60px;
+}
+.nav-left{
+	flex-grow: 1;
+}
+.zuo-brand{
+	line-height: 60px;
+	color: #fff;
+	text-decoration: none;
+	display: flex;
+	align-items: center;
+}
+.web-version{
+	font-size: 10px;
+    color: rgba(255,255,255,.3);
+    width: 100px;
+}
+.nav-center{
+	flex-grow: 2;
+	box-flex: 2;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.nav-center .center-left{
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+}
+.nav-list>li{
+	margin-right: 30px;
+    line-height: 24px;
+}
+.list-inline>li{
+	display: inline-block;
+	vertical-align: baseline;
+}
+.nav-list a{
+	font-size: 14px;
+    line-height: 20px;
+    color: #9ea0a5;
+}
+a.nav-link.v-link-active{
+	color: #fff;
+}
+li.zuo-search-mobile {
+    display: none!important;
+}
+.nav-search-form{
+	min-width: 230px;
+	position: relative;
+}
+.nav-search-form input.form-control {
+    padding: 6px 30px 6px 10px;
+    background-color: #464b4d;
+    color: #fff;
+}
+.form-control{
+	outline: 0;
+	border: none;
+	border-radius: 4px;
+	font-size: 14px;
+	line-height: 20px;
+	width: 100%;
+}
+#submit-search{
+	display: block;
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    position: absolute;
+    right: 6px;
+    top: 7px;
+    color: #b8b9b9;
+}
+.nav-right{
+	flex-grow: 1;
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+}
+.nav-list li.sign-up{
+	margin-right: 0;
+}
+/*内容主体*/
+.zuo-content-container{
+	padding-top: 60px;
+}
+.zuo-welcome{
+	position: relative;
+	background-image: url("../images/overlay.png");
+	background-repeat: repeat;
+	background-color: #eaeced;
+}
+.welcome-body{
+	width: 790px;
+	text-align: center;
+	margin: 0 auto;
+	padding: 30px 0;
+}
+.welcome-body>h1{
+	font-size: 24px;
+    margin: 0;
+    font-weight: 700;
+    color: #272c2f;
+}
+.subtip{
+	margin-top: 15px;
+    margin-bottom: 18px;
+    font-size: 16px;
+    color: #5d6c75;
+}
+
+.zuo-btn{
+	display: inline-block;
+	line-height: normal;
+    white-space: nowrap;
+    vertical-align: middle;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 4px;
+    padding: .7em 1em;
+    border: rgba(0,0,0,0);
+}
+.welcome-download-link{
+	display: none;
+}
+.zuo-btn-theme{
+	background-color: #1fd7e2;
+    color: #fff;
+}
+#new-zuoer-link {
+    width: 200px;
+    font-size: 16px;
+}
+.welcome-close {
+    position: absolute;
+    display: block;
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    top: 35px;
+    right: 30px;
+    color: #5d6c75;
+}
+/*内容正文*/
+.zuo-home-content{
+	width:790px;
+	margin: 0 auto;
+	display: flex;
+	justify-content: space-between;
+	position: relative;
+	padding-top: 30px;
+}
+.left-col{
+	width: 540px;
+	padding-bottom: 30px;
+}
+.right-col{
+	width: 220px;
+}
+/*话题卡*/
+.zd-topic-card {
+    margin-bottom: 30px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.topic-body{
+	height: 1px;
+	min-height: 167px;
+    position: relative;
+    background: url("../images/topic.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+}
+.topic-info{
+	position: relative;
+    color: #fff;
+    padding: 18px 30px;
+    height: 100%;
+}
+.topic-mask{
+	position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,.4);
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+}
+.topic-info-body{
+	position: relative;
+}
+.topic-info .topic-title {
+    font-size: 22px;
+    line-height: 28px;
+    margin-top: 30px;
+    margin-bottom: 18px;
+}
+.topic-info .topic-counts {
+    display: flex;
+    align-items: center;
+    color: rgba(255,255,255,.6);
+    font-size: 14px;
+}
+.tip-title {
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+}
+.tip-divider {
+    width: 20px;
+    height: 5px;
+    border-radius: 6px;
+    background-color: #F8D440;
+    margin-top: 10px;
+}
+.icon-hometopicentry {
+    font-size: 24px;
+}
+.topic-info .vertical-line {
+    padding: 0 10px;
+}
+
+.topic-comments-carousel {
+    min-height: 60px;
+    background-color: #fff;
+}
+.carousel-body, .topic-comments-carousel {
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+}
+.carousel-body {
+    display: flex;
+    align-items: flex-start;
+    padding: 18px 20px;
+    word-break: break-all;
+    font-size: 13px;
+    line-height: 22px;
+    height: 80px;
+    overflow: hidden;
+}
+.carousel-body-inner {
+    height: 40px;
+    overflow: hidden;
+    line-height: 20px;
+}
+.carousel-link {
+    color: #272c2f;
+    font-weight: 500;
+}
+.carousel-content {
+    color: #999a9a;
+    height: 40px;
+    overflow: hidden;
+}
+.carousel-content a {
+    color: #272c2f;
+    font-weight: 500;
+}
+/*主体下拉菜单*/
+.dropdown .dropdown-menu {
+    padding: 10px 0;
+    min-width: 100px;
+    margin-top: 8px;
+}
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 2500;
+    display: none;
+    float: left;
+    min-width: 160px;
+    padding: 5px 0;
+    margin: 2px 0 0;
+    list-style: none;
+    font-size: 14px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border: 1px solid rgba(0,0,0,.15);
+    border-radius: 4px;
+    box-shadow: 0 6px 12px rgba(0,0,0,.175);
+}
+.dropdown-menu, .popover {
+    text-align: left;
+    background-clip: padding-box;
+}
+.dropdown-arrow {
+    position: absolute;
+    width: 13px;
+    height: 13px;
+    border-left: 1px solid #ccc;
+    border-top: 1px solid #ccc;
+    border-right: 0;
+    border-bottom: 0;
+    background-color: #fff;
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+    margin-left: -5px;
+    top: -7px;
+    left: 50%;
+}
+.dropdown .dropdown-menu li {
+    margin-right: 0;
+    padding: 0 10px;
+}
+.dropdown .dropdown-menu li a {
+    padding: 10px 15px;
+    text-decoration: none;
+    color: #a6a7a7;
+    font-weight: 500;
+    text-align: center;
+    border-radius: 4px;
+    margin-bottom: 5px;
+}
+.open>.dropdown-menu {
+    display: block;
+}
+.dropdown-menu>li>a:focus, .dropdown-menu>li>a:hover {
+    text-decoration: none;
+    color: #262626;
+    background-color: #f5f5f5;
+}
+.icon, .simditor-icon {
+    display: inline-block;
+}
+/*主体内容框*/
+.zuo-feed, .zuo-feed-inner, .zuo-toast-view {
+    border-radius: 4px;
+}
+.zuo-feed {
+    margin-bottom: 18px;
+    z-index: 400;
+    position: relative;
+}
+.zuo-feed-inner {
+    position: relative;
+    background-color: #fff;
+    z-index: 450;
+}
+.left-col .feed-image {
+    min-height: 540px;
+    height: 100%;
+}
+.feed-image {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    z-index: 900;
+    background-color: #eaeced;
+    display: flex;
+    align-items: center;
+    font-size: 0;
+}
+.feed-image-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    -webkit-transition: .5s;
+    transition: .5s;
+    -webkit-transition-property: background-color;
+    transition-property: background-color;
+    z-index: 1100;
+    cursor: zoom-in;
+}
+.feed-image:hover .feed-image-overlay{
+    background-color:rgba(0,0,0,.2)
+}
+.feed-image img {
+    display: block;
+    width: 100%;
+}
+.feed-halo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    color: #fff;
+    width: 120px;
+    height: 120px;
+    margin-top: -60px;
+    margin-left: -60px;
+    z-index: 1200;
+}
+.feed-halo, .feed-halo span {
+    border-radius: 50%;
+    position: absolute;
+}
+.feed-halo.good {
+    border: 2px solid #1fd7e2;
+}
+.feed-halo.normal {
+    -webkit-transition: .2s;
+    transition: .2s;
+}
+.feed-image:hover .feed-halo.normal {
+    width: 140px;
+    height: 140px;
+    margin-top: -70px;
+    margin-left: -70px;
+    border-width: 5px;
+}
+.feed-halo .like-tip {
+    text-align: center;
+    opacity: 0;
+    filter: alpha(opacity=0);
+    visibility: hidden;
+    -webkit-transition: .3s;
+    transition: .3s;
+}
+.feed-image:hover .feed-halo.normal .like-tip {
+    opacity: 1;
+    filter: alpha(opacity=100);
+    visibility: visible;
+}
+.feed-halo .like-tip-big {
+    font-size: 24px;
+    font-weight: 500;
+}
+.feed-halo .like-tip-small {
+    font-size: 14px;
+}
+.feed-halo span {
+    display: block;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+}
+.feed-halo.good span {
+    border: 1px solid #1fd7e2;
+    background-color: rgba(31,217,255,.2);
+}
+.feed-halo span.animated {
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-timing-function: ease-out;
+    animation-timing-function: ease-out;
+    -webkit-animation-iteration-count: infinite;
+    animation-iteration-count: infinite;
+}
+.feed-halo span.animated-pop {
+    -webkit-animation-name: pop;
+    animation-name: pop;
+}
+@-webkit-keyframes pop{
+    0%{
+        -webkit-transform:scale(1);
+        transform:scale(1);
+        opacity:1
+    }
+    100%{
+        -webkit-transform:scale(1.5);
+        transform:scale(1.5);
+        opacity:0
+    }
+}
+@keyframes pop{
+    0%{
+        -webkit-transform:scale(1);
+        transform:scale(1);
+        opacity:1
+    }
+    100%{
+        -webkit-transform:scale(1.5);
+        transform:scale(1.5);
+        opacity:0
+    }
+}
+.liking-tip.good {
+    color: #1fd7e2;
+}
+.liking-tip {
+    position: absolute;
+    font-size: 14px;
+    line-height: 20px;
+    top: 50%;
+    margin-top: -10px;
+    z-index: 1400;
+    width: 60px;
+    left: 50%;
+    margin-left: -30px;
+    text-align: center;
+    opacity: 0;
+}
+.feed-content {
+    padding: 18px 0 0;
+}
+.feed-text {
+    line-height: 22px;
+    padding: 0 25px 18px;
+    color: #595c5d;
+}
+.feed-tags.big {
+    padding-left: 25px;
+    padding-right: 25px;
+}
+.feed-tags.big .tag-body {
+    padding-bottom: 13px;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+}
+.feed-tags .tag-body {
+    display: flex;
+     -webkit-box-align: center;
+    align-items: center;
+    justify-content: flex-start;
+    border-bottom: 1px solid #ececec;
+}
+.tag-item {
+    padding-right: 15px;
+    color: #a6a7a7;
+    display: flex;
+    align-items: center;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+.tag-item:hover {
+    color: #535557;
+}
+.icon-tag {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: #a6a7a7;
+}
+.tag-item .name {
+    padding-left: 5px;
+}
+.feed-info {
+    padding-top: 18px;
+    padding-bottom: 10px;
+}
+.comment-info {
+    padding-left: 25px;
+    padding-right: 25px;
+    padding-bottom: 9px;
+    display: flex;
+    align-items: center;
+    line-height: 20px;
+}
+.icon-iconhomecomment {
+    font-size: 18px;
+    color: #bebfc0;
+}
+.comment-count, .more-comments {
+    padding-left: 8px;
+    color: #a6a7a7;
+    cursor: pointer;
+}
+.comment-list {
+    padding: 0 10px;
+    max-height: 360px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+.comment-item {
+    padding: 9px 15px;
+}
+.comment-item:hover {
+    background-color: #f7f7f8;
+    border-radius: 4px;
+}
+.comment-text a, .owner-link {
+    font-size: 12px;
+    font-weight: 600;
+    color: #272c2f;
+}
+.comment-text {
+    font-size: 12px;
+    color: #595c5d;
+    word-break: break-word;
+}
+.comment-actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 3px;
+    font-size: 12px;
+    line-height: 18px;
+}
+.comment-actions .time {
+    color: #c9c9c9;
+}
+.comment-actions .right-part {
+    display: flex;
+    align-items: center;
+}
+.comment-actions .reply-link {
+    display: none;
+    margin-right: 18px;
+    color: #a1a2a3;
+}
+.comment-item:hover .comment-actions .reply-link {
+    display: inline;
+}
+.comment-actions .like-text {
+    color: #a1a2a3;
+    cursor: pointer;
+    padding-right: 3px;
+}
+.comment-actions .comment-like-count {
+    padding-left: 2px;
+    padding-right: 2px;
+}
+.icon-iconhomelight {
+    font-size: 13px;
+    color: #bebfc0;
+}
+.add-comment {
+    display: flex;
+    align-items: center;
+}
+.add-body {
+    width: 100%;
+    padding-left: 25px;
+    padding-right: 25px;
+}
+.input-wrap {
+    border-top: 1px solid #ececec;
+}
+.comment-textarea, .new-comment {
+    width: 100%;
+    outline: 0;
+    border: none;
+    padding: 18px 10px 18px 2px;
+    font-size: 14px;
+    line-height: 20px;
+}
+textarea.comment-textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+.add-comment-actions {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    padding: 15px;
+}
+.icon-consumer, .icon-professional {
+    width: 16px;
+    height: 16px;
+}
+.icon-not_liked {
+    width: 20px;
+    height: 20px;
+}
+.icon-iconhomemore, .icon-iconhomeshare {
+    font-size: 17px;
+    color: #b8b9b9;
+}
+.dropdown-header, .dropdown-menu>li>a {
+    display: block;
+    white-space: nowrap;
+    line-height: 1.42857143;
+}
+/*侧边栏*/
+.side-title {
+    font-size: 14px;
+    font-weight: 500;
+    color: #272c2f;
+}
+.hot-tags-list {
+    margin-top: 18px;
+}
+.tag-link {
+    display: inline-block;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    padding: 6px 10px;
+    font-size: 14px;
+    color: #999b9c;
+    background-color: #eaeced;
+    border-radius: 4px;
+    -webkit-transition-duration: .3s;
+    transition-duration: .3s;
+}
+.tag-link:hover {
+    color: #fff;
+    background-color: #999b9c;
+}
+.recommend-users {
+    margin-top: 30px;
+}
+.side-title {
+    font-size: 14px;
+    font-weight: 500;
+    color: #272c2f;
+}
+.recommend-users .users-list {
+    margin-top: 8px;
+}
+.recommend-users .user-item {
+    position: relative;
+    border-bottom: 1px solid #e4e4e5;
+    padding: 10px 0;
+    background-color: transparent;
+    border-radius: 4px;
+}
+.recommend-users .user-text-info {
+    width: 146px;
+}
+.recommend-users .user-name a {
+    font-weight: 500;
+    color: #535557;
+}
+.recommend-users .user-name a:hover {
+    color: #999a9a;
+}
+.recommend-users .user-intro {
+    padding-top: 5px;
+}
+.recommend-users .user-intro a {
+    font-size: 12px;
+    line-height: 18px;
+    color: #999a9a;
+}
+.recommend-users .user-intro a:hover {
+    color: #535557;
+}
+.recommend-users .user-avatar {
+    position: absolute;
+    top: 10px;
+    right: 0;
+    font-size: 0;
+}
+.recommend-users .user-avatar-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 4px;
+    -webkit-transition-duration: .3s;
+    transition-duration: .3s;
+    -webkit-transition-property: background-color;
+    transition-property: background-color;
+}
+.recommend-users .user-avatar:hover .user-avatar-overlay {
+    background-color: rgba(0,0,0,.2);
+}
+.recommend-users .user-avatar img {
+    width: 40px;
+    height: 40px;
+    border: 1px solid #e4e4e5;
+}
+.zuo-img-rounded {
+    border-radius: 4px;
+}
+.zuo-intro {
+    margin-top: 30px;
+}
+.zuo-app-download, .zuo-weixin-account {
+    width: 220px;
+    height: 50px;
+    border: 1px solid #ececec;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    border-radius: 4px;
+}
+.zuo-app-download:hover, .zuo-weixin-account:hover {
+    background-color: #fbfbfb;
+    box-shadow: 1px 0 4px rgba(0,0,0,.05);
+}
+.zuo-app-download a, .zuo-weixin-account a {
+    display: inline-block;
+    width: 169px;
+    height: 50px;
+    border-right: 1px solid #ececec;
+    text-align: center;
+    line-height: 50px;
+    color: #272c2f;
+}
+.zuo-app-download .icon {
+    width: 31px;
+    height: 31px;
+    position: relative;
+    left: -8px;
+}
+.icon-download_hover, .icon-wechat_qr_hover, .zuo-app-download:hover .icon-download {
+    display: none;
+}
+.zuo-app-download:hover .icon-download_hover {
+    display: inline-block;
+}
+.zuo-weixin-account .icon {
+    width: 23px;
+    height: 23px;
+    position: relative;
+    left: -12px;
+}
+.zuo-weixin-account:hover .icon-wechat_qr {
+    display: none;
+}
+.zuo-weixin-account:hover .icon-wechat_qr_hover {
+    display: inline-block;
+}
+.side-bar.is-stick-bottom {
+    position: fixed;
+    bottom: 100px;
+    width: 220px;
+}
+/*app下载*/
+#zuo-download-app, #zuo-wechat-account {
+    -webkit-transition: .5s;
+    transition: .5s;
+    opacity: 0;
+    filter: alpha(opacity=0);
+    visibility: hidden;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 3000;
+    background-color: rgba(39,44,47,.9);
+    background-image: linear-gradient(to top,rgba(39,44,47,.9),rgba(39,44,47,.5));
+}
+#zuo-download-app.show, #zuo-wechat-account.show {
+    opacity: 1;
+    filter: alpha(opacity=100);
+    visibility: visible;
+}
+#zuo-download-app img, #zuo-wechat-account img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 436px;
+    height: 440px;
+    margin-top: -220px;
+    margin-left: -218px;
+}
+/*导航按钮*/
+.zuo-right-bottom {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    z-index: 2900;
+}
+.rb-actions a, .zuo-right-bottom .icon {
+    width: 40px;
+    height: 40px;
+}
+#back-to-top, #side-create-new-zuo {
+    position: fixed;
+    right: 30px;
+    z-index: 3888;
+    -webkit-transition: .3s;
+    opacity: 0;
+    visibility: hidden;
+}
+#back-to-top.show, #side-create-new-zuo.show {
+    opacity: 1;
+    visibility: visible;
+}
+#back-to-top {
+    bottom: 150px;
+    transition: .3s;
+}
+/*底部*/
+.zuo-footer {
+    margin-top: 30px;
+    background-color: #eaeaea;
+}
+.footer-inner {
+    max-width: 420px;
+    margin: 0 auto;
+    padding-top: 18px;
+    padding-bottom: 18px;
+    text-align: center;
+}
+.footer-actions a {
+    text-decoration: none;
+    font-size: 13px;
+    color: #999a9a;
+    margin: 0 10px;
+}
+.zuo-law-rights {
+    font-size: 13px;
+    color: #b8b9b9;
+    margin-top: 10px;
+}

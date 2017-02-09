@@ -1,0 +1,14 @@
+.auth-box .zuo-remeber-me-link.uncheck .icon-iconhomecheckbox {
+    color: #b8b9b9;
+}
+.zuo-btn[disabled] {
+    border: none;
+    background-image: none;
+    filter: alpha(opacity=40);
+    opacity: .4;
+    cursor: not-allowed;
+    box-shadow: none;
+}
+.auth-box .zuo-remeber-me-link a {
+    color: #1fd7e2;
+}

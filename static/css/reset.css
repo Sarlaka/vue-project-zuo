@@ -1,0 +1,128 @@
+/* 重置&默认(reset&base)(tags) */
+*{box-sizing: border-box;}
+*[hidefocus],input,textarea,a{outline:none;}
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,blockquote,th,td{padding:0;margin:0;}
+fieldset,img,html,body,iframe{border:0;}
+table{border-collapse:collapse;border-spacing:0;}
+li{list-style:none;}
+h1,h2,h3,h4,h5,h6{font-size:100%;}
+caption,th{font-weight:normal;font-style:normal;text-align:left;}
+em,strong{font-weight:bold;font-style:normal;}
+body,textarea,select,input,pre{font: 14px/1.4 "Helvetica Neue",Helvetica,Arial,sans-serif,"Microsoft YaHei";font-weight: 400;}
+/*body{background:#f8f8f8;line-height:1.5em;-webkit-text-size-adjust:none;}*/
+a,button{cursor:pointer;}
+textarea{resize:none;overflow:auto;}
+pre{white-space:pre-wrap;}
+a{background-color: transparent;cursor: pointer;text-decoration: none}
+input{
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+    -webkit-user-modify: read-write-plaintext-only;
+} 
+button {
+	-webkit-tap-highlight-color: rgba(255,255,255,0)
+}
+/* 布局(grids)(.g-) */ 
+/* 页面 */
+
+.dark{
+	background-color: #272c2f;
+}
+.is-fixed-top{
+	position: fixed;
+	left: 0;
+	top: 0;
+	z-index: 3000;
+}
+.show {
+    display: block!important;
+}
+
+.zuo-form input[type=text], .zuo-form input[type=password], .zuo-form input[type=email], .zuo-form input[type=url], .zuo-form input[type=date], .zuo-form input[type=month], .zuo-form input[type=time], .zuo-form input[type=datetime], .zuo-form input[type=datetime-local], .zuo-form input[type=week], .zuo-form input[type=tel], .zuo-form input[type=color], .zuo-form input[type=number], .zuo-form input[type=search], .zuo-form select, .zuo-form textarea {
+    padding: .5em .6em;
+    display: inline-block;
+    border: none;
+    border-radius: 4px;
+    vertical-align: middle;
+    box-sizing: border-box;
+}
+zuo-btn-selected, .zuo-btn-theme, a.zuo-btn-selected, a.zuo-btn-theme {
+    background-color: #1fd7e2;
+    color: #fff;
+}
+
+svg:not(:root) {
+    overflow: hidden;
+}
+
+@font-face{
+	font-family:"iconfont";
+	src:url("../fonts/iconfont.eot");
+	src:url("../fonts/iconfont.eot@#iefix") format('embedded-opentype'),
+		url("../fonts/iconfont.woff") format('woff'),
+		url("../fonts/iconfont.ttf") format('truetype'),
+		url("../fonts/iconfont.svg") format('svg')
+}
+.iconfont{
+	font-family:"iconfont" !important;
+	font-size:16px;
+	font-style:normal;
+	-webkit-font-smoothing:antialiased;
+	-webkit-text-stroke-width:.2px
+}
+.icon-iconlogo{
+	font-size: 60px;
+}
+.icon-iconlogo:before{
+	content: "\e606";
+}
+.icon-iconhomesearch:before {
+    content: "\e616";
+}
+.icon-iconhomelogin:before {
+    content: "\e614";
+}
+.icon-iconhomeclose:before {
+    content: "\e611";
+}
+.icon-hometopicentry:before {
+    content: "\e629";
+}
+.icon-iconhomedropmenu:before {
+    content: "\e613";
+}
+.icon-iconhomecatagory:before {
+    content: "\e610";
+}
+.icon-iconhomecheckbox:before {
+    content: "\e60d";
+}
+.icon-iconhomecomment:before {
+    content: "\e612";
+}
+.icon-iconhomelight:before {
+    content: "\e60c";
+}
+.icon-iconstaffpicks:before {
+    content: "\e61f";
+}
+.icon-iconhomeshare:before {
+    content: "\e617";
+}
+.icon-iconhomemore:before {
+    content: "\e615";
+}
+.icon-iconregisterwelcomelogo:before {
+    content: "\e603";
+}
+.icon-iconregisterweibo:before {
+    content: "\e604";
+}
+.icon-iconregisterwechatsvg:before {
+    content: "\e605";
+}
+.icon-iconloginpsw:before {
+    content: "\e61b";
+}
+.icon-iconlogincode:before {
+    content: "\e61a";
+}

@@ -1,0 +1,152 @@
+.zuo-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 3900;
+    background-color: rgba(39,44,47,.9);
+    background-image: linear-gradient(to top,rgba(39,44,47,.9),rgba(39,44,47,.5));
+    overflow-y: auto;
+}
+.auth-box {
+    width: 540px;
+    position: absolute;
+    top: 100px;
+    left: 50%;
+    margin-left: -270px;
+}
+.auth-box .icon-welcome_close {
+    position: absolute;
+    top: 10px;
+    right: -34px;
+    font-size: 16px;
+    color: #b8b9b9;
+    cursor: pointer;
+}
+.auth-box .box-title {
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    background-color: #272c2f;
+    font-size: 18px;
+    padding-top: 25px;
+    padding-bottom: 25px;
+    color: #fff;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+}
+.icon-iconregisterwelcomelogo {
+    font-size: 32px;
+    line-height: 32px;
+}
+.auth-box .title-text {
+    padding-left: 15px;
+}
+.auth-box .form-wrap {
+    padding: 30px;
+    background-color: #fff;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+}
+.auth-box .social-auth {
+    padding: 0 30px;
+}
+.auth-box .form-body {
+    padding-top: 30px;
+}
+.auth-box .social-choices {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+}
+.auth-box .social-choices a {
+    display: inline-block;
+    color: #444;
+    margin: 0 20px;
+}
+.icon-iconregisterwechatsvg, .icon-iconregisterweibo {
+    font-size: 32px;
+}
+.auth-box .social-tip {
+    margin-top: 13px;
+    margin-bottom: 13px;
+    font-size: 14px;
+    color: #a6a7a7;
+    text-align: center;
+}
+.auth-box .divider {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    padding-left: 40px;
+    padding-right: 40px;
+    font-size: 14px;
+    color: #d7d8d8;
+}
+.auth-box .divider .line {
+    height: 1px;
+    width: 138px;
+    background-color: #d7d8d8;
+}
+.zuo-control-group {
+    position: relative;
+    margin-bottom: 20px;
+}
+.zuo-control-group input.zuo-control {
+    width: 100%;
+    background-color: #f7f7f7;
+    padding: 14px 20px;
+    font-size: 14px;
+    line-height: 22px;
+}
+.zuo-control-group #zuo-get-code {
+    width: 115px;
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    padding: 12px 18px;
+    font-size: 14px;
+}
+.auth-box .other-actions {
+    margin-bottom: 30px;
+    font-size: 14px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+}
+.auth-box #forget-pass-link, .auth-box #sign-up-link {
+    color: #a6a7a7;
+}
+.auth-box #pass-login-link, .auth-box #sms-login-link {
+    color: #272c2f;
+}
+.zuo-btn-block {
+    width: 100%;
+}
+.auth-box button.zuo-btn-theme {
+    font-size: 18px;
+    outline: none;
+}
