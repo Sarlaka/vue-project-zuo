@@ -3,7 +3,7 @@
         <!-- 欢迎页面 -->
         <div class="zuo-welcome" v-if="welcome">
           <div class="welcome-body">
-            <h1>可能是全宇宙最ZUO的图片社区</h1>
+            <h1 @click="getTopic">可能是全宇宙最ZUO的图片社区</h1>
             <div class="subtip">
               <span class="subtip1">和像你一样认真对待生活的人一起</span><br>
               <span class="subtip2">从设计的视角，重新认识世界</span>
@@ -29,13 +29,13 @@
                         <div class="tip-divider"></div>
                       </div>
                       <div class="topic-title">
-                        <span>重新认识文具</span>
+                        <span>{{topic.title}}</span>
                         <i class="iconfont icon-hometopicentry"></i>
                       </div>
                       <div class="topic-counts">
-                        <span class="topic-stars">16人收藏</span>
+                        <span class="topic-stars">{{topic.collect_count}}人收藏</span>
                         <span class="vertical-line">|</span>
-                        <span class="topic-comment">28个讨论</span>
+                        <span class="topic-comment">{{topic.comment_count}}个讨论</span>
                       </div>
                     </div>
                   </div>
@@ -238,7 +238,12 @@ export default {
   },
   data: function () {
     return {
-      welcome: true
+      welcome: true,
+      topic: {
+        title: '',
+        collect_count: '',
+        comment_count: ''
+      }
     }
   },
   computed: {
@@ -255,7 +260,17 @@ export default {
     },
     designchange: function (data) {
       console.log(data)
+    },
+    getTopic: function () {
+      this.$http.get('/api/topics').then(res => {
+        this.topic.title = res.body.topic.title
+        this.topic.collect_count = res.body.topic.collect_count
+        this.topic.comment_count = res.body.topic.comment_count
+      })
     }
+  },
+  created () {
+    this.getTopic()
   }
 }
 </script>

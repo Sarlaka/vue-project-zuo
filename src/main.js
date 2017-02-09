@@ -3,12 +3,14 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import VueRouter from 'vue-router'
+import VueResource from 'vue-resource'
 import App from './App'
 import home from './zuo/home'
 import articles from './zuo/articles'
 
 Vue.use(VueRouter)
 Vue.use(Vuex)
+Vue.use(VueResource)
 
 const routes = [
   { path: '', component: home },
