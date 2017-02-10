@@ -19,7 +19,7 @@
         <div class="zuo-home">
           <div class="zuo-home-content">
             <div class="left-col">
-              <div class="zd-topic-card">
+              <div class="zd-topic-card" v-if="topicLoaded">
                 <div class="topic-body">
                   <div class="topic-info">
                     <div class="topic-mask"></div>
@@ -50,6 +50,7 @@
                   </div>
                 </div>
               </div>
+              <feed-loading v-else></feed-loading>
               <div class="left-content">
                 <feed-list-bar v-on:designchoose="designchange"></feed-list-bar>
                 <article class="zuo-feed">
@@ -144,24 +145,17 @@
                     </div>
                   </div>
                 </article>
+                <feed-loading></feed-loading>
               </div>
             </div>
             <div class="right-col">
               <div class="side-bar">
                 <div class="hot-tags">
                   <header class="side-title">热门标签</header>
-                  <div class="hot-tags-list">
-                    <a class="tag-link" href="/zuo/search?q=JASPER%20MORRISON">JASPER MORRISON</a><a class="tag-link" href="/zuo/search?q=App">App</a>
-                    <a class="tag-link" href="/zuo/search?q=%E6%97%A5%E6%9C%AC">日本</a>
-                    <a class="tag-link" href="/zuo/search?q=%E6%94%B6%E7%BA%B3">收纳</a>
-                    <a class="tag-link" href="/zuo/search?q=%E5%AE%9C%E5%AE%B6">宜家</a>
-                    <a class="tag-link" href="/zuo/search?q=%E7%BE%8E%E5%A6%86%E4%B8%8E%E6%8A%A4%E8%82%A4">美妆与护肤</a>
-                    <a class="tag-link" href="/zuo/search?q=%E6%96%87%E5%85%B7">文具</a>
-                    <a class="tag-link" href="/zuo/search?q=%E5%80%BC%E5%BE%97%E5%86%8D%E6%AC%A1%E6%80%9D%E8%80%83%E7%9A%84%E6%97%A5%E5%B8%B8%E8%AE%BE%E8%AE%A1">值得再次思考的日常设计</a>
-                    <a class="tag-link" href="/zuo/search?q=%E6%B3%95%E5%85%B0%E5%85%8B%E7%A6%8F%E7%9A%84%E8%AE%BE%E8%AE%A1">法兰克福的设计</a>
-                    <a class="tag-link" href="/zuo/search?q=%E5%9C%B0%E9%93%81">地铁</a>
-                    <a class="tag-link" href="/zuo/search?q=Long%20Life%20Design%20Award">Long Life Design Award</a>
+                  <div class="hot-tags-list" v-if="hotTagsLoaded">
+                    <a class="tag-link" v-for="hotTag in hotTags" :href="'/zuo/search?q='+hotTag.content">{{hotTag.content}}</a>
                   </div>
+                  <feed-loading v-else></feed-loading>
                 </div>
                 <div class="recommend-users">
                   <header class="side-title">推荐关注</header>
@@ -230,11 +224,13 @@
 import feedListBar from '../components/feedListBar/feedListBar'
 import feedRecommendBadge from '../components/recommendBadge/recommendBadge'
 import feedHeader from '../components/feedHeader/feedHeader'
+import feedLoading from '../components/loading/loading'
 export default {
   components: {
     feedListBar,
     feedRecommendBadge,
-    feedHeader
+    feedHeader,
+    feedLoading
   },
   data: function () {
     return {
@@ -243,7 +239,10 @@ export default {
         title: '',
         collect_count: '',
         comment_count: ''
-      }
+      },
+      topicLoaded: false,
+      hotTags: [],
+      hotTagsLoaded: false
     }
   },
   computed: {
@@ -266,11 +265,21 @@ export default {
         this.topic.title = res.body.topic.title
         this.topic.collect_count = res.body.topic.collect_count
         this.topic.comment_count = res.body.topic.comment_count
+      }).then(function () {
+        this.topicLoaded = true
+      })
+    },
+    getTags: function () {
+      this.$http.get('/api/web_hot_tags').then(res => {
+        this.hotTags = res.body.hot_tags
+      }).then(function () {
+        this.hotTagsLoaded = true
       })
     }
   },
   created () {
     this.getTopic()
+    this.getTags()
   }
 }
 </script>
