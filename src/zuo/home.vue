@@ -159,39 +159,25 @@
                 </div>
                 <div class="recommend-users">
                   <header class="side-title">推荐关注</header>
-                  <div class="users-list">
-                    <div class="user-item">
+                  <div class="users-list" v-if="reco_usersLoaded">
+                    <div class="user-item" v-for="reco_user in reco_users">
                       <div class="user-text-info">
                         <div class="user-name">
-                          <a href="/u/maker-Gao">九月</a>
+                          <a :href="'/u/'+reco_user.zuoId">{{reco_user.nickname}}</a>
                         </div>
                         <div class="user-intro">
-                          <a href="/u/maker-Gao">抛却日常偏见，像孩子般看待世界</a>
+                          <a :href="'/u/'+reco_user.zuoId">{{reco_user.introduction}}</a>
                         </div>
                       </div>
                       <div class="user-avatar">
-                        <a title="九月" href="/u/maker-Gao">
+                        <a title="九月" :href="'/u/'+reco_user.zuoId">
                           <div class="user-avatar-overlay"></div>
-                          <img alt="avatar" class="zuo-img-rounded" src="http://ac-llsFhjiU.clouddn.com/IIzksnS78stXrJXwiKO4MJB.png?imageView/1/w/60/h/60/q/100/format/jpeg">
+                          <img alt="avatar" class="zuo-img-rounded" :src="reco_user.avatar">
                         </a>
                       </div>
                     </div>
-                    <div class="user-item">
-                      <div class="user-text-info">
-                        <div class="user-name">
-                          <a href="/u/55251626e4b00750789c3537">Crystal</a>
-                        </div>
-                        <div class="user-intro">
-                          <a href="/u/55251626e4b00750789c3537">吃喝玩乐，无所不ZUO的设计师</a>
-                        </div>
-                      </div>
-                      <div class="user-avatar">
-                        <a title="Crystal" href="/u/55251626e4b00750789c3537">
-                          <div class="user-avatar-overlay"></div>
-                          <img alt="avatar" class="zuo-img-rounded" src="http://ac-llsFhjiU.clouddn.com/gk5y0JOcUBOU1EhWDkAjN0C.png?imageView/1/w/60/h/60/q/100/format/jpeg">
-                        </a>
-                      </div>
-                    </div><div class="user-item"> <div class="user-text-info"> <div class="user-name"> <a href="/u/5525175be4b03381b30c3e0f">哥哥哥哥</a> </div> <div class="user-intro"> <a href="/u/5525175be4b03381b30c3e0f">文艺青年的日常，逛店，摄影和随身之物</a> </div> </div> <div class="user-avatar"> <a title="哥哥哥哥" href="/u/5525175be4b03381b30c3e0f"> <div class="user-avatar-overlay"></div> <img alt="avatar" class="zuo-img-rounded" src="http://ac-llsFhjiU.clouddn.com/ZftBQcSQgBoteMeSYO6SJ2B.png?imageView/1/w/60/h/60/q/100/format/jpeg"> </a> </div> </div><div class="user-item"> <div class="user-text-info"> <div class="user-name"> <a href="/u/GoodDesign">Y'All Doomed</a> </div> <div class="user-intro"> <a href="/u/GoodDesign">发现那些陪伴我们日常的优良设计</a> </div> </div> <div class="user-avatar"> <a title="Y'All Doomed" href="/u/GoodDesign"> <div class="user-avatar-overlay"></div> <img alt="avatar" class="zuo-img-rounded" src="http://ac-llsFhjiU.clouddn.com/b8c42f717b632397b6d4.jpg?imageView/1/w/60/h/60/q/100/format/jpeg"> </a> </div> </div><div class="user-item"> <div class="user-text-info"> <div class="user-name"> <a href="/u/570c758c79bc44005f4f95a2">HemingZZZ</a> </div> <div class="user-intro"> <a href="/u/570c758c79bc44005f4f95a2">设计师北美游记，保持开放心态地进行城市探索。</a> </div> </div> <div class="user-avatar"> <a title="HemingZZZ" href="/u/570c758c79bc44005f4f95a2"> <div class="user-avatar-overlay"></div> <img alt="avatar" class="zuo-img-rounded" src="http://ac-llsFhjiU.clouddn.com/zcsE6JNsNtFPoMqFZDYqS7B.png?imageView/1/w/60/h/60/q/100/format/jpeg"> </a> </div> </div> </div> </div>
+                  </div>
+                  <feed-loading v-else></feed-loading>
                 </div>
                 <div class="zuo-intro">
                   <div class="zuo-app-download">
@@ -217,7 +203,7 @@
             </div>
           </div>
         </div>
-      </div>
+  </div>
 </template>
 
 <script>
@@ -242,7 +228,9 @@ export default {
       },
       topicLoaded: false,
       hotTags: [],
-      hotTagsLoaded: false
+      hotTagsLoaded: false,
+      reco_users: [],
+      reco_usersLoaded: false
     }
   },
   computed: {
@@ -275,11 +263,20 @@ export default {
       }).then(function () {
         this.hotTagsLoaded = true
       })
+    },
+    getRecoUsers: function () {
+      this.$http.get('/api/web_reco_users').then(res => {
+        this.reco_users = res.body.reco_users
+        console.log(this.reco_users)
+      }).then(function () {
+        this.reco_usersLoaded = true
+      })
     }
   },
   created () {
     this.getTopic()
     this.getTags()
+    this.getRecoUsers()
   }
 }
 </script>
