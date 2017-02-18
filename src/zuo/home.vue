@@ -53,74 +53,62 @@
               <feed-loading v-else></feed-loading>
               <div class="left-content">
                 <feed-list-bar v-on:designchoose="designchange"></feed-list-bar>
-                <article class="zuo-feed">
-                  <feed-recommend-badge></feed-recommend-badge>
+                <!-------------------------------------->
+                <article class="zuo-feed" v-for="hotPost in hotPosts">
+                  <feed-recommend-badge v-if="hotPost.isRecommend"></feed-recommend-badge>
                   <div class="zuo-feed-inner">
-                    <feed-header></feed-header>
+                    <feed-header :userInfo="hotPost.owner" :likeCount="hotPost.likeCount"></feed-header>
                     <div class="feed-body">
                       <div class="feed-image">
                         <div class="feed-image-overlay"></div>
-                        <img src="http://ac-llsFhjiU.clouddn.com/ftWxjBJIBESHXGo5KG2DM5A.png?imageView/1/w/640/h/640/q/100/format/jpeg" alt="500228035.527012_post.png">
-                        <a class="feed-halo good normal" style="top: 56.723%; left: 69.1224%;">
+                        <img :src="hotPost.postImage.url" :alt="hotPost.postImage.name">
+                        <a class="feed-halo is-liked" :class="[hotPost.isGoodDesign?'good':'bad']" :style="{left:hotPost.haloCenterRatio.width_ratio*100+'%',top: hotPost.haloCenterRatio.height_ratio*100+'%'}" v-if="hotPost.isLiked"> 
+                          <div class="liking-tip good"> Bravo </div>
+                        </a>
+                        <a class="feed-halo normal" :class="[hotPost.isGoodDesign?'good':'bad']" :style="{left:hotPost.haloCenterRatio.width_ratio*100+'%',top: hotPost.haloCenterRatio.height_ratio*100+'%'}" v-else>
                           <div class="like-tip">
                             <div class="like-tip-big">赞同</div>
                             <div class="like-tip-small">这个态度</div>
                           </div>
-                          <span class="animated animated-pop"></span>
+                          <span class="animated" :class="[hotPost.isGoodDesign?'animated-pop':'animated-shrink']"></span>
                           <div class="liking-tip good">Bravo</div>
                         </a>
                       </div>
                       <div class="feed-content">
-                        <div class="feed-text">无限多米诺</div>
+                        <div class="feed-text">{{hotPost.postDescription}}</div>
                         <div class="feed-tags big">
                           <div class="tag-body">
-                            <a class="tag-item" href="/zuo/tag/%E5%AE%B6%E5%B1%85">
-                              <i class="icon icon-tag" style="background-color: rgb(88, 0, 24);"></i>
-                              <span class="name">家居</span>
+                            <a class="tag-item" :href="'/zuo/tag/'+hotPost.sceneTag.name">
+                              <i class="icon icon-tag" :style="{backgroundColor: hotPost.sceneTag.color}"></i>
+                              <span class="name">{{hotPost.sceneTag.name}}</span>
+                            </a>
+                            <a v-for="tag in hotPost.tags" class="tag-item" :href="'/zuo/tag/'+tag">
+                              <i class="icon icon-tag"></i>
+                              <span class="name">{{tag}}</span>
                             </a>
                           </div>
                         </div>
                         <div class="feed-info">
                           <section class="comment-info">
                             <i class="iconfont icon-iconhomecomment"></i>
-                            <span class="comment-count"> 5条评论 </span>
-                            <span class="more-comments">更多评论...</span>
+                            <span class="comment-count"> {{hotPost.commentedCount}}条评论 </span>
+                            <span class="more-comments" v-if="hotPost.commentedCount>2">更多评论...</span>
                           </section>
                           <ul class="comment-list">
-                            <li class="comment-item">
+                            <li class="comment-item" v-for="comment in hotPost.comments">
                               <div class="comment-content">
-                                <a target="_blank" class="owner-link" href="/u/582c2be0128fe100694d2bda/posts">男男</a>
+                                <a target="_blank" class="owner-link" :href="'/u/'+comment.author.zuoId+'/posts'">{{comment.author.nickname}}</a>
                                 <span> -&nbsp;</span>
-                                <span class="comment-text"> 设计很实用 </span>
+                                <span class="comment-text"> {{comment.text}} </span>
                               </div>
                               <div class="comment-actions">
-                                <span class="time">2 个月前</span>
+                                <span class="time">{{comment.timeAgo}}</span>
                                 <span class="right-part">
                                   <a class="reply-link">回复</a>
                                   <span class="comment-like">
                                     <span class="like-text">
                                       <span class="comment-light-tip"> 点亮 </span>
-                                      <strong class="comment-like-count">0</strong>
-                                      <i class="iconfont icon-iconhomelight"></i>
-                                    </span>
-                                  </span>
-                                </span>
-                              </div>
-                            </li>
-                            <li class="comment-item">
-                              <div class="comment-content">
-                                <a target="_blank" class="owner-link" href="/u/LeftLittle/posts"> 人民艺术家 </a>
-                                <span> -&nbsp;</span>
-                                <span class="comment-text"> 这个概念跟静安寺钟书阁有点像 </span>
-                              </div>
-                              <div class="comment-actions">
-                                <span class="time">2 个月前</span>
-                                <span class="right-part">
-                                  <a class="reply-link">回复</a>
-                                  <span class="comment-like">
-                                    <span class="like-text">
-                                      <span class="comment-light-tip"> 点亮 </span>
-                                      <strong class="comment-like-count">0</strong>
+                                      <strong class="comment-like-count">{{comment.likeNumber}}</strong>
                                       <i class="iconfont icon-iconhomelight"></i>
                                     </span>
                                   </span>
@@ -145,7 +133,8 @@
                     </div>
                   </div>
                 </article>
-                <feed-loading></feed-loading>
+                <!-------------------------------------->
+                <feed-loading v-if='this.hotPostsLoading'></feed-loading>
               </div>
             </div>
             <div class="right-col">
@@ -211,6 +200,8 @@ import feedListBar from '../components/feedListBar/feedListBar'
 import feedRecommendBadge from '../components/recommendBadge/recommendBadge'
 import feedHeader from '../components/feedHeader/feedHeader'
 import feedLoading from '../components/loading/loading'
+import $ from 'jquery'
+
 export default {
   components: {
     feedListBar,
@@ -230,7 +221,16 @@ export default {
       hotTags: [],
       hotTagsLoaded: false,
       reco_users: [],
-      reco_usersLoaded: false
+      reco_usersLoaded: false,
+      hotPosts: [],
+      hotPostsLoading: true,
+      morePostParams: {
+        design: '',
+        scene: '全部',
+        after: ''
+      },
+      has_next: true,
+      getMoreFlag: true
     }
   },
   computed: {
@@ -249,6 +249,7 @@ export default {
       console.log(data)
     },
     getTopic: function () {
+      // 获取标题
       this.$http.get('/api/topics').then(res => {
         this.topic.title = res.body.topic.title
         this.topic.collect_count = res.body.topic.collect_count
@@ -258,6 +259,7 @@ export default {
       })
     },
     getTags: function () {
+      // 获取热门标签
       this.$http.get('/api/web_hot_tags').then(res => {
         this.hotTags = res.body.hot_tags
       }).then(function () {
@@ -265,18 +267,58 @@ export default {
       })
     },
     getRecoUsers: function () {
+      // 获取推荐作者
       this.$http.get('/api/web_reco_users').then(res => {
         this.reco_users = res.body.reco_users
-        console.log(this.reco_users)
+        // console.log(this.reco_users)
       }).then(function () {
         this.reco_usersLoaded = true
+      })
+    },
+    getHotPosts: function () {
+      // 获取热门设计
+      this.$http.get('/api/web_hot_posts').then(res => {
+        this.hotPosts = res.body.posts
+        // console.log(this.hotPosts)
+      }).then(function () {
+        this.hotPostsLoading = false
+
+        var _this = this
+        // var content = $('#root')
+        $(window).scroll(function () {
+          var winHeight = $(window).height()
+          var docHeight = $('#root').height()
+          var scrollTop = $(window).scrollTop()
+          if ((scrollTop + winHeight + 200 > docHeight) && _this.getMoreFlag) {
+            _this.getMoreFlag = false
+            _this.getMorePosts()
+          }
+        })
+      })
+    },
+    getMorePosts: function () {
+      // 获取更多设计
+      this.hotPostsLoading = true
+      this.$http.get('/api/posts', {params: {design: this.morePostParams.design, scene: this.morePostParams.scene, after: this.morePostParams.after}}).then(res => {
+        console.log(res.body)
+        var length = res.body.posts.length
+        var posts = res.body.posts
+        this.hotPosts = this.hotPosts.concat(posts)
+        this.has_next = res.body.has_next
+        if (this.has_next) {
+          this.morePostParams.after = posts[length - 1].createdAt
+        }
+        this.hotPostsLoading = false
+        this.getMoreFlag = true
       })
     }
   },
   created () {
+    // 页面初始化加载
     this.getTopic()
     this.getTags()
     this.getRecoUsers()
+    this.getHotPosts()
   }
 }
 </script>

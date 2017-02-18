@@ -13,7 +13,7 @@
           <div class="nav-center">
             <ul class="nav-list list-inline"> 
               <li>
-                <router-link to="/zuo/home" class="nav-link v-link-active">首页</router-link>
+                <router-link to="/zuo/home" class="nav-link">首页</router-link>
               </li>
               <li>
                 <router-link to="/zuo/articles" class="nav-link">深度</router-link>
@@ -99,6 +99,7 @@
 import loginLayout from './components/loginLayout/loginLayout'
 import registerLayout from './components/registerLayout/registerLayout'
 import forgetPasswordLayout from './components/forgetPasswordLayout/forgetPasswordLayout'
+
 export default {
   name: 'app',
   components: {

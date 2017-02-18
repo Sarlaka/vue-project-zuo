@@ -3,22 +3,25 @@
 	<div class="top-inner">
 		<div class="owner-info">
 			<div class="owner-avatar">
-				<a class="owner-link" href="/u/5767cfe8a341310064e94757/posts">
-					<img alt="photo" class="zuo-img-circle" src="http://ac-llsFhjiU.clouddn.com/D7w8VqOdPpexcFIWPv8xSgC.png?imageView/1/w/60/h/60/q/100/format/jpeg">
+				<a class="owner-link" :href="'/u/'+this.userInfo.objectId+'/posts'">
+					<img alt="photo" class="zuo-img-circle" :src="this.userInfo.avatar">
 				</a>
-				<svg class="icon icon-professional">
+				<svg class="icon icon-professional" v-if="this.userInfo.userRole==='professional'">
 					<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-professional"></use>
 				</svg>
+				<svg class="icon icon-consumer" v-if="this.userInfo.userRole==='consumers'">
+					<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-consumer"></use>
+				</svg>	
 			</div>
 			<div class="owner-name">
-				<a class="owner-link" href="/u/5767cfe8a341310064e94757/posts"> zuoyou </a> 
+				<a class="owner-link" :href="'/u/'+this.userInfo.objectId+'/posts'">{{this.userInfo.nickname}}</a> 
 			</div>
 		</div>
 		<div class="feed-right-actions">
 			<svg class="icon icon-not_liked">
 				<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-not_liked"></use>
 			</svg>
-			<span class="feed-like-count"> 88个赞同 </span>
+			<span class="feed-like-count"> {{this.likeCount}}个赞同 </span>
 			<a class="share-toggle">
 				<i class="iconfont icon-iconhomeshare"></i>
 			</a>
@@ -39,7 +42,9 @@
 </template>
 
 <script>
-export default {}
+export default {
+  props: ['userInfo', 'likeCount']
+}
 </script>
 
 <style>
@@ -71,6 +76,11 @@ export default {}
     position: absolute;
     top: 0;
     right: -8px;
+}
+.icon-consumer {
+    position: absolute;
+    top: 0;
+    left: -8px;
 }
 .zuo-img-circle {
     border-radius: 50%;

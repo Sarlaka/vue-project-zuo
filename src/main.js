@@ -13,12 +13,13 @@ Vue.use(Vuex)
 Vue.use(VueResource)
 
 const routes = [
-  { path: '', component: home },
   { path: '/zuo/home', component: home },
-  { path: '/zuo/articles', component: articles }
+  { path: '/zuo/articles', component: articles },
+  { path: '/', redirect: '/zuo/home' }
 ]
 
 const router = new VueRouter({
+  linkActiveClass: 'v-link-active',
   routes // （缩写）相当于 routes: routes
 })
 

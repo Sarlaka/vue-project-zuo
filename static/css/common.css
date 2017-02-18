@@ -412,9 +412,15 @@ li.zuo-search-mobile {
 .feed-halo.good {
     border: 2px solid #1fd7e2;
 }
+.feed-halo.bad {
+    border: 2px solid #f94815;
+}
 .feed-halo.normal {
     -webkit-transition: .2s;
     transition: .2s;
+}
+.feed-halo.good.is-liked {
+    background-color: rgba(31,217,255,.2);
 }
 .feed-image:hover .feed-halo.normal {
     width: 140px;
@@ -456,6 +462,10 @@ li.zuo-search-mobile {
     border: 1px solid #1fd7e2;
     background-color: rgba(31,217,255,.2);
 }
+.feed-halo.bad span {
+    border: 1px solid #f94815;
+    background-color: rgba(249,72,21,.2);
+}
 .feed-halo span.animated {
     -webkit-animation-duration: 1s;
     animation-duration: 1s;
@@ -467,6 +477,10 @@ li.zuo-search-mobile {
 .feed-halo span.animated-pop {
     -webkit-animation-name: pop;
     animation-name: pop;
+}
+.feed-halo span.animated-shrink {
+    -webkit-animation-name: shrink;
+    animation-name: shrink;
 }
 @-webkit-keyframes pop{
     0%{
@@ -492,8 +506,35 @@ li.zuo-search-mobile {
         opacity:0
     }
 }
+@-webkit-keyframes shrink {
+    0% {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+        opacity: 1;
+    }
+    100% {
+        -webkit-transform: scale(.5);
+        transform: scale(.5);
+        opacity: 0;
+    }
+}
+@keyframes shrink {
+    0% {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+        opacity: 1;
+    }
+    100% {
+        -webkit-transform: scale(.5);
+        transform: scale(.5);
+        opacity: 0;
+    }
+}
 .liking-tip.good {
     color: #1fd7e2;
+}
+.liking-tip.bad {
+    color: #f94815;
 }
 .liking-tip {
     position: absolute;
